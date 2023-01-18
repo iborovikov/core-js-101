@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* *************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -27,8 +28,17 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  if (num % 3 === 0 && num % 5 === 0) {
+    return 'FizzBuzz';
+  }
+  if (num % 3 === 0) {
+    return 'Fizz';
+  }
+  if (num % 5 === 0) {
+    return 'Buzz';
+  }
+  return num;
 }
 
 
@@ -43,8 +53,18 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  let num = n;
+  let result = n;
+  if (num === 0 || num === 1) {
+    return 1;
+  }
+
+  while (num > 1) {
+    num -= 1;
+    result *= num;
+  }
+  return result;
 }
 
 
@@ -60,8 +80,12 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  let result = 0;
+  for (let i = n1; i <= n2; i += 1) {
+    result += i;
+  }
+  return result;
 }
 
 
@@ -80,8 +104,8 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  return a + b > c && c + b > a && a + c > b;
 }
 
 
@@ -117,8 +141,23 @@ function isTriangle(/* a, b, c */) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  function makeZone(start, end) {
+    const result = [];
+    for (let i = start; i <= end; i += 1) {
+      result.push(i);
+    }
+    return result;
+  }
+  function isOverlap(first, second) {
+    return first.some((elm) => second.includes(elm));
+  }
+  const firstRectXzone = makeZone(rect1.left, rect1.left + rect1.width);
+  const firstRectYzone = makeZone(rect1.top, rect1.top + rect1.height);
+  const secondEctXzone = makeZone(rect2.left, rect2.left + rect2.width);
+  const secondEctYzone = makeZone(rect2.top, rect2.top + rect2.height);
+
+  return isOverlap(firstRectXzone, secondEctXzone) && isOverlap(firstRectYzone, secondEctYzone);
 }
 
 
@@ -148,8 +187,12 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const a = point.x - circle.center.x;
+  const b = point.y - circle.center.y;
+  const c = Math.sqrt(a ** 2 + b ** 2);
+
+  return circle.radius > c;
 }
 
 
@@ -164,8 +207,14 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const arr = str.split('');
+  const rep = {};
+  arr.forEach((elm) => {
+    if (rep[elm] !== undefined) { rep[elm] += 1; } else { rep[elm] = 1; }
+  });
+
+  return Object.keys(rep)[Object.values(rep).indexOf(1)];
 }
 
 
@@ -208,8 +257,8 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 
@@ -225,8 +274,8 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return Number(num.toString().split('').reverse().join(''));
 }
 
 

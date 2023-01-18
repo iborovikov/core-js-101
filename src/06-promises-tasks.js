@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* ************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -13,6 +14,7 @@
  * with error message === 'Wrong parameter is passed! Ask her again.',
  * if is not boolean value passed
  *
+ // eslint-disable-next-line linebreak-style
  * @param {boolean} isPositiveAnswer
  * @return {Promise}
  *
